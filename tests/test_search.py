@@ -8,6 +8,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from src.data_loader import load_clean_data
 from src.search_tfidf import TFIDFSearchEngine
 
+
 def test_queries():
     df = load_clean_data()
     engine = TFIDFSearchEngine(df)

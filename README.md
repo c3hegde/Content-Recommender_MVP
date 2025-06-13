@@ -11,7 +11,7 @@ Developed and evaluated two distinct models to create a unified recommender syst
 
 
 ## Use Case
-This MVP demonstrates how companies can retrieve company specific information that is ranked and recommended based on search parameters. 
+This MVP demonstrates how companies can retrieve internal, specific information that is ranked and recommended based on search parameters. 
 
 ## Models Used
 

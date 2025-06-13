@@ -23,7 +23,7 @@ This MVP demonstrates how companies can retrieve company specific information th
 
 ## Project Structure
 
-diabetes-predictor-ai-mvp/
+content-recommender-mvp/
 - ├── data/               # Raw and processed datasets
 - ├── notebooks/          # Exploratory Data Analysis. Load and preprocess documents and metadata
 - ├── automation/         # data update and retraining pipeline

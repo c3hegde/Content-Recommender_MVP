@@ -7,11 +7,11 @@ from src.semantic_search import SemanticSearch
 
 class RAGPipeline:
     def __init__(self, retriever_model="all-MiniLM-L6-v2", generator_model="google/flan-t5-small"):
-        print("🔍 Loading Retriever...")
+        print(" Loading Retriever...")
         self.retriever = SemanticSearch(model_name=retriever_model)
         self.retriever.load_index()
         
-        print("🧠 Loading Generator...")
+        print(" Loading Generator...")
         self.tokenizer = T5Tokenizer.from_pretrained(generator_model)
         self.generator = T5ForConditionalGeneration.from_pretrained(generator_model)
 

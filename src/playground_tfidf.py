@@ -24,10 +24,10 @@ results = search_engine.search(query, top_n=5)
 #print(results.head())
 
 if results.empty:
-    print("⚠️ No relevant documents found.")
+    print(" No relevant documents found.")
 else:
     for i, row in results.iterrows():
-        print(f"\n🔍 {row['title']} [{row['category']}] (score: {row['score']:.3f})\n{row['content'][:300]}...")
+        print(f"\n {row['title']} [{row['category']}] (score: {row['score']:.3f})\n{row['content'][:300]}...")
 
 
        #Code recommended if you have to debug:

@@ -9,5 +9,5 @@ if __name__ == "__main__":
     query = "What does the employee benefits policy include?"
     
     answer = rag.generate_answer(query)
-    print("\n🧠 Generated Answer:")
+    print("\n Generated Answer:")
     print(answer)

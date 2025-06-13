@@ -32,7 +32,7 @@ class TFIDFSearchEngine:
         self.documents = df.copy()
         combined_text = df["title"] + " " + df[text_field]
         self.tfidf_matrix = self.vectorizer.fit_transform(combined_text)
-        print(f"✅ Indexed {self.tfidf_matrix.shape[0]} documents with {self.tfidf_matrix.shape[1]} terms.")
+        print(f" Indexed {self.tfidf_matrix.shape[0]} documents with {self.tfidf_matrix.shape[1]} terms.")
 
     def search(self, query: str, top_n=5):
         query_vector = self.vectorizer.transform([query])

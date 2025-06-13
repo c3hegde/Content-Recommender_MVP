@@ -18,10 +18,10 @@ def load_clean_data(data_path="data/processed/combined_documents.csv", min_len=3
     if not os.path.exists(data_path):
         raise FileNotFoundError(f"❌ Data file not found at {data_path}")
 
-    print(f"📂 Loading data from: {data_path}")
+    print(f" Loading data from: {data_path}")
     df = pd.read_csv(data_path, low_memory=False)
 
-    print("✅ Raw data loaded. Cleaning...")
+    print(" Raw data loaded. Cleaning...")
 
     df["title"] = df["title"].fillna("").apply(clean_text)
     df["content"] = df["content"].fillna("").apply(clean_text)
@@ -29,5 +29,5 @@ def load_clean_data(data_path="data/processed/combined_documents.csv", min_len=3
 
     df = df[df["content"].str.len() > min_len].reset_index(drop=True)
 
-    print(f"✅ Cleaned {len(df)} documents.")
+    print(f" Cleaned {len(df)} documents.")
     return df

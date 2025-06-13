@@ -20,10 +20,10 @@ class SemanticSearch:
         self.embeddings = None
 
     def build_index(self, save_path="data/faiss_index"):
-        print("🔍 Generating embeddings...")
+        print(" Generating embeddings...")
         self.embeddings = self.model.encode(self.texts, show_progress_bar=True, convert_to_numpy=True)
 
-        print("📦 Building FAISS index...")
+        print(" Building FAISS index...")
         dim = self.embeddings.shape[1]
         self.index = faiss.IndexFlatL2(dim)
         self.index.add(self.embeddings)
@@ -32,15 +32,15 @@ class SemanticSearch:
         faiss.write_index(self.index, os.path.join(save_path, "semantic.index"))
         with open(os.path.join(save_path, "metadata.pkl"), "wb") as f:
             pickle.dump(self.df, f)
-        print("✅ Index built and saved.")
+        print(" Index built and saved.")
 
     def load_index(self, path="data/faiss_index"):
-        print("📂 Loading index...")
+        print(" Loading index...")
         self.index = faiss.read_index(os.path.join(path, "semantic.index"))
         with open(os.path.join(path, "metadata.pkl"), "rb") as f:
             self.df = pickle.load(f)
             self.texts = self.df['content'].fillna("").tolist()
-        print("✅ Index loaded.")
+        print(" Index loaded.")
 
     def search(self, query, top_k=5):
         query_vec = self.model.encode([query], convert_to_numpy=True)

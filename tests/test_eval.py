@@ -27,7 +27,7 @@ def build_test_cases(queries, min_len=30):
                 "relevant_ids": relevant_ids
             })
         except Exception as e:
-            print(f"⚠️ Failed for query: {query} → {e}")
+            print(f" Failed for query: {query} → {e}")
     return test_cases
 
 def evaluate_query(engine, query, relevant_ids, top_k=5):
@@ -37,11 +37,11 @@ def evaluate_query(engine, query, relevant_ids, top_k=5):
     true_positives = len(set(retrieved_ids) & set(relevant_ids))
     precision = true_positives / top_k
     if len(relevant_ids) == 0:
-     print(f"⚠️ No relevant documents found for query: '{query}'")
+     print(f" No relevant documents found for query: '{query}'")
      recall = 0.0
     else:
-     print(f"✅ Retrieved top {top_k} results.")
-     print(f"📌 Ground truth relevant_ids: {relevant_ids}")
+     print(f" Retrieved top {top_k} results.")
+     print(f" Ground truth relevant_ids: {relevant_ids}")
      recall = true_positives / len(relevant_ids)
    
     return {
@@ -54,7 +54,7 @@ def evaluate_query(engine, query, relevant_ids, top_k=5):
     }
 
 def evaluate_all(engine, test_cases, k=5):
-    print(f"🔍 Running evaluation on {len(test_cases)} queries (Top-{k})...")
+    print(f" Running evaluation on {len(test_cases)} queries (Top-{k})...")
     all_results = []
 
     for case in test_cases:
@@ -70,7 +70,7 @@ def evaluate_all(engine, test_cases, k=5):
     avg_precision = sum(r["precision@k"] for r in all_results) / len(all_results)
     avg_recall = sum(r["recall@k"] for r in all_results) / len(all_results)
 
-    print("\n📊 Summary:")
+    print("\n Summary:")
     print(f"Average Precision@{k}: {avg_precision:.2f}")
     print(f"Average Recall@{k}: {avg_recall:.2f}")
 

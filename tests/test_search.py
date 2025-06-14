@@ -19,10 +19,10 @@ def test_queries():
         "vacation leave process",
         "python programming"
     ]
-    print("✅ TF-IDF Matrix shape:", engine.tfidf_matrix.shape)
+    print(" TF-IDF Matrix shape:", engine.tfidf_matrix.shape)
 
     for query in test_cases:
-        print(f"\n🔎 Query: {query}")
+        print(f"\n Query: {query}")
         results = engine.search(query, top_n=3)
         for i, row in results.iterrows():
             print(f"{i+1}. {row['title']} (Score: {row['score']:.3f})")

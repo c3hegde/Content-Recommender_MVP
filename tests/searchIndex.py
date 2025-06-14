@@ -14,14 +14,14 @@ def search_index_data(data_path="data/processed/combined_documents.csv",
                       min_len=30):
 
     if not os.path.exists(data_path):
-        raise FileNotFoundError(f"❌ Data file not found at {data_path}")
+        raise FileNotFoundError(f" Data file not found at {data_path}")
     
     if not query:
-        raise ValueError("❌ Query string must be provided.")
+        raise ValueError(" Query string must be provided.")
     
     query = query.strip()
 
-    print(f"📂 Searching for: '{query}' in {data_path}")
+    print(f" Searching for: '{query}' in {data_path}")
     df = pd.read_csv(data_path, low_memory=False)
 
     # Basic filtering
@@ -30,13 +30,13 @@ def search_index_data(data_path="data/processed/combined_documents.csv",
     # Filter out very short content
     filtered_df = filtered_df[filtered_df["content"].str.len() > min_len]
 
-    print(f"✅ Found {len(filtered_df)} matching documents.")
-    print(f"🧠 Document indices: {filtered_df.index.tolist()[:10]} ...")
+    print(f" Found {len(filtered_df)} matching documents.")
+    print(f" Document indices: {filtered_df.index.tolist()[:10]} ...")
     print(filtered_df[["title", "content"]].head(5))
 
     if export:
         filtered_df.to_csv(export_path, index=True)
-        print(f"📁 Exported to: {export_path}")
+        print(f" Exported to: {export_path}")
 
     return filtered_df.copy()
     
